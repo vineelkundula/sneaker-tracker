@@ -1,0 +1,1256 @@
+/* ==============================
+   RESET
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", Arial, sans-serif;
+    background: #f5f5f5;
+    color: #111111;
+}
+
+
+/* ==============================
+   NAVBAR
+============================== */
+
+nav {
+    width: 100%;
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: #111111;
+    color: white;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.brand-icon {
+    font-size: 25px;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    list-style: none;
+}
+
+nav a {
+    color: #bdbdbd;
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: white;
+}
+
+
+/* ==============================
+   HERO
+============================== */
+
+.hero {
+    min-height: 520px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #303030 0%,
+            #171717 45%,
+            #0b0b0b 100%
+        );
+
+    color: white;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 14px;
+
+    margin-bottom: 25px;
+
+    border: 1px solid #444444;
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: #bdbdbd;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.hero-badge span {
+    color: #72e6ad;
+}
+
+.hero h1 {
+    margin-bottom: 22px;
+
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.05;
+
+    letter-spacing: -3px;
+}
+
+.hero h1 span {
+    color: #999999;
+}
+
+.hero p {
+    max-width: 680px;
+
+    margin: 0 auto;
+
+    color: #b5b5b5;
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.primary-btn {
+    margin-top: 32px;
+
+    padding: 15px 24px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: white;
+    color: #111111;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    background: #e5e5e5;
+}
+
+.primary-btn span {
+    margin-left: 7px;
+}
+
+
+/* ==============================
+   AI SECTION
+============================== */
+
+.ai-section {
+    padding: 80px 7%;
+
+    background: #f5f5f5;
+}
+
+.ai-card {
+    max-width: 1050px;
+
+    margin: 0 auto;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    background: #151515;
+
+    color: white;
+
+    border: 1px solid #292929;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.ai-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    margin-bottom: 15px;
+}
+
+.ai-icon {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #292929;
+
+    font-size: 24px;
+}
+
+.section-label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #929292;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.ai-header h2 {
+    font-size: 26px;
+    letter-spacing: -0.7px;
+}
+
+.ai-description {
+    max-width: 700px;
+
+    margin-bottom: 25px;
+
+    color: #a8a8a8;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* ==============================
+   AI TEXTAREA
+============================== */
+
+.ai-input-wrapper {
+    overflow: hidden;
+
+    border: 1px solid #363636;
+    border-radius: 13px;
+
+    background: #0e0e0e;
+}
+
+#aiNewsInput {
+    display: block;
+
+    width: 100%;
+    min-height: 170px;
+
+    padding: 18px;
+
+    border: none;
+    outline: none;
+
+    resize: vertical;
+
+    background: transparent;
+
+    color: white;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+#aiNewsInput::placeholder {
+    color: #686868;
+}
+
+
+/* ==============================
+   AI BUTTON AREA
+============================== */
+
+.ai-input-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 13px 15px;
+
+    border-top: 1px solid #292929;
+}
+
+.ai-input-footer span {
+    color: #777777;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.analyze-btn {
+    padding: 11px 18px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: white;
+    color: #111111;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.analyze-btn:hover {
+    transform: translateY(-1px);
+    background: #e5e5e5;
+}
+
+.analyze-btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.analyze-btn span {
+    margin-left: 6px;
+    color: #111111;
+}
+
+#aiStatus {
+    margin-top: 15px;
+
+    color: #75e0ac;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* ==============================
+   RELEASES
+============================== */
+
+.releases-section {
+    max-width: 1250px;
+
+    margin: 0 auto;
+
+    padding: 70px 7% 100px;
+}
+
+.section-heading {
+    margin-bottom: 30px;
+}
+
+.section-heading h2 {
+    margin: 5px 0;
+
+    font-size: 34px;
+    letter-spacing: -1.2px;
+}
+
+.section-heading p {
+    color: #777777;
+
+    font-size: 14px;
+}
+
+
+/* ==============================
+   SEARCH + SORT
+============================== */
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 18px;
+}
+
+.search-wrapper {
+    position: relative;
+
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-icon {
+    position: absolute;
+
+    left: 16px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #888888;
+
+    font-size: 20px;
+}
+
+#searchInput {
+    width: 100%;
+
+    padding: 14px 18px 14px 45px;
+
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+
+    background: white;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+#searchInput:focus {
+    border-color: #999999;
+
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
+}
+
+.sort-container {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.sort-container label {
+    color: #777777;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#sortSelect {
+    padding: 12px 14px;
+
+    border: 1px solid #dddddd;
+    border-radius: 9px;
+
+    background: white;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+
+/* ==============================
+   FILTER BUTTONS
+============================== */
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 9px 15px;
+
+    border: 1px solid #dddddd;
+    border-radius: 999px;
+
+    background: white;
+
+    color: #666666;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.filter-btn:hover {
+    border-color: #999999;
+    color: #111111;
+}
+
+.filter-btn.active {
+    background: #111111;
+    color: white;
+
+    border-color: #111111;
+}
+
+
+/* ==============================
+   SNEAKER GRID
+============================== */
+
+#sneaker-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(270px, 1fr)
+        );
+
+    gap: 22px;
+}
+
+
+/* ==============================
+   SNEAKER CARD
+============================== */
+
+.card {
+    overflow: hidden;
+
+    background: white;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.05);
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
+}
+
+.card img {
+    display: block;
+
+    width: 100%;
+    height: 280px;
+
+    object-fit: cover;
+
+    background: #eeeeee;
+}
+
+.card-content {
+    padding: 19px;
+}
+
+.card-content h2 {
+    margin-bottom: 10px;
+
+    font-size: 17px;
+
+    line-height: 1.3;
+}
+
+.card-content p {
+    color: #777777;
+
+    font-size: 13px;
+}
+
+.status {
+    display: inline-block;
+
+    margin: 12px 0 5px;
+
+    padding: 5px 9px;
+
+    border-radius: 999px;
+
+    background: #eeeeee;
+
+    font-size: 11px !important;
+    font-weight: 700;
+}
+
+.status.confirmed {
+    background: #e8f8ef;
+    color: #087443;
+}
+
+.status.rumor {
+    background: #fff3dc;
+    color: #a15c00;
+}
+
+.card-content h3 {
+    margin-top: 8px;
+
+    font-size: 18px;
+}
+
+
+/* ==============================
+   FAVORITE BUTTON
+============================== */
+
+.favorite-btn {
+    margin-top: 15px;
+
+    padding: 9px 12px;
+
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+
+    background: white;
+
+    color: #555555;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.favorite-btn:hover {
+    background: #f4f4f4;
+}
+
+
+/* ==============================
+   NO RESULTS
+============================== */
+
+.no-results {
+    grid-column: 1 / -1;
+
+    padding: 70px 20px;
+
+    text-align: center;
+}
+
+.no-results h2 {
+    margin-bottom: 8px;
+}
+
+.no-results p {
+    color: #777777;
+}
+
+
+/* ==============================
+   SNEAKER DETAILS
+============================== */
+
+.sneaker-details {
+    display: none;
+
+    max-width: 950px;
+
+    margin: 60px auto;
+
+    padding: 40px;
+
+    background: white;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+}
+
+.detail-back {
+    margin-bottom: 30px;
+
+    padding: 10px 15px;
+
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+
+    background: white;
+
+    color: #333333;
+
+    font-family: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.detail-back:hover {
+    background: #f4f4f4;
+}
+
+.detail-image {
+    display: block;
+
+    width: 100%;
+    max-width: 520px;
+    max-height: 520px;
+
+    object-fit: cover;
+
+    margin: 0 auto 35px;
+
+    border-radius: 14px;
+}
+
+.detail-content {
+    text-align: center;
+}
+
+.detail-content h1 {
+    margin-bottom: 15px;
+
+    font-size: 35px;
+    letter-spacing: -1px;
+}
+
+.detail-content p {
+    margin: 7px 0;
+
+    color: #777777;
+}
+
+.detail-content h3 {
+    margin-top: 18px;
+
+    font-size: 25px;
+}
+
+#countdown {
+    margin: 22px 0 !important;
+
+    color: #111111 !important;
+
+    font-size: 17px !important;
+    font-weight: 700;
+}
+
+.detail-favorite-btn {
+    margin-top: 10px;
+
+    padding: 12px 20px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: #111111;
+
+    color: white;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.detail-favorite-btn:hover {
+    background: #333333;
+}
+
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer {
+    padding: 45px 7%;
+
+    background: #111111;
+
+    color: white;
+
+    text-align: center;
+}
+
+.footer-brand {
+    margin-bottom: 5px;
+
+    font-weight: 800;
+}
+
+footer p {
+    color: #777777;
+
+    font-size: 12px;
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 768px) {
+
+    nav {
+        height: auto;
+
+        padding: 18px 6%;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    nav ul {
+        gap: 18px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 480px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        letter-spacing: -2px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .ai-section {
+        padding: 50px 5%;
+    }
+
+    .ai-card {
+        padding: 25px 20px;
+    }
+
+    .ai-header h2 {
+        font-size: 21px;
+    }
+
+    .ai-input-footer {
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 10px;
+    }
+
+    .analyze-btn {
+        width: 100%;
+    }
+
+    .releases-section {
+        padding: 50px 5% 70px;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-wrapper {
+        max-width: none;
+    }
+
+    .sort-container {
+        justify-content: space-between;
+    }
+
+    #sortSelect {
+        flex: 1;
+    }
+
+    #sneaker-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sneaker-details {
+        margin: 30px 5%;
+
+        padding: 25px 18px;
+    }
+
+    .detail-content h1 {
+        font-size: 28px;
+    }
+}
+
+/* ==============================
+   ADMIN LOGIN
+============================== */
+
+.admin-login-btn {
+    padding: 8px 14px;
+
+    border: 1px solid #444;
+    border-radius: 8px;
+
+    background: transparent;
+    color: white;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.admin-login-btn:hover {
+    background: white;
+    color: #111;
+}
+
+
+/* Login Overlay */
+
+.login-modal {
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.7);
+
+    backdrop-filter: blur(6px);
+
+    z-index: 9999;
+}
+
+.login-box {
+    position: relative;
+
+    width: 100%;
+    max-width: 400px;
+
+    padding: 35px;
+
+    border: 1px solid #333;
+    border-radius: 18px;
+
+    background: #151515;
+    color: white;
+
+    text-align: center;
+
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+}
+
+.close-login {
+    position: absolute;
+
+    top: 15px;
+    right: 18px;
+
+    border: none;
+
+    background: none;
+
+    color: #888;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+.close-login:hover {
+    color: white;
+}
+
+.login-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 18px;
+
+    border-radius: 14px;
+
+    background: #292929;
+
+    font-size: 24px;
+}
+
+.login-box h2 {
+    margin-bottom: 8px;
+
+    font-size: 25px;
+}
+
+.login-box > p {
+    margin-bottom: 22px;
+
+    color: #888;
+
+    font-size: 13px;
+}
+
+#adminPassword {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid #3a3a3a;
+    border-radius: 9px;
+
+    outline: none;
+
+    background: #0e0e0e;
+    color: white;
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+#adminPassword:focus {
+    border-color: #777;
+}
+
+#loginSubmitBtn {
+    width: 100%;
+
+    margin-top: 12px;
+
+    padding: 13px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: white;
+    color: #111;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+#loginSubmitBtn:hover {
+    background: #e5e5e5;
+}
+
+#loginStatus {
+    margin-top: 15px !important;
+    margin-bottom: 0 !important;
+
+    color: #ff7777 !important;
+
+    font-size: 12px !important;
+}
+
+/* ==============================
+   ADMIN ACCESS MESSAGE
+============================== */
+
+.admin-only-message {
+    display: none;
+
+    margin-bottom: 20px;
+    padding: 15px 18px;
+
+    border: 1px solid #333;
+    border-radius: 12px;
+
+    background: #1a1a1a;
+    color: white;
+
+    font-size: 14px;
+}
+
+.admin-only-message p {
+    margin-top: 5px;
+
+    color: #999;
+    font-size: 12px;
+}
+
+/* ===============================
+   AI ADMIN ACCESS
+================================ */
+
+.admin-only-message {
+    display: none;
+
+    text-align: center;
+
+    padding: 30px;
+
+    border: 1px solid #333;
+    border-radius: 16px;
+
+    background: #171717;
+    color: white;
+}
+
+.admin-lock-icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.admin-only-message h3 {
+    margin-bottom: 8px;
+}
+
+.admin-only-message p {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+#aiAdminLoginBtn {
+    padding: 11px 20px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: white;
+    color: #111;
+
+    font-family: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+#aiAdminLoginBtn:hover {
+    opacity: 0.85;
+}
+
+/* ===============================
+   ADMIN ACTION BUTTONS
+   =============================== */
+
+.add-image-btn,
+.image-btn,
+.delete-sneaker-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 11px 14px;
+
+    border-radius: 9px;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* ADD IMAGE */
+
+.add-image-btn,
+.image-btn {
+    border: 1px solid #dedede;
+
+    background: #f7f7f7;
+    color: #222;
+}
+
+.add-image-btn:hover,
+.image-btn:hover {
+    background: #eeeeee;
+    border-color: #cfcfcf;
+
+    transform: translateY(-1px);
+}
+
+.add-image-btn:active,
+.image-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* DELETE */
+
+.delete-sneaker-btn {
+    border: 1px solid #eeeeee;
+
+    background: white;
+    color: #777;
+}
+
+.delete-sneaker-btn:hover {
+    background: #f7f7f7;
+
+    border-color: #d6d6d6;
+
+    color: #c62828;
+
+    transform: translateY(-1px);
+}
+
+.delete-sneaker-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* ADMIN BUTTON GROUP */
+
+.admin-actions {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+
+    margin-top: 14px;
+    padding-top: 14px;
+
+    border-top: 1px solid #eeeeee;
+}

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sneaker Tracker</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ===============================
+         NAVIGATION
+    ================================ -->
+
+    <nav>
+
+        <div class="nav-brand">
+            <span class="brand-icon">👟</span>
+            <span>Sneaker Tracker</span>
+        </div>
+
+        <ul>
+            <li>
+                <a href="#">Home</a>
+            </li>
+
+            <li>
+                <a href="#releases">Releases</a>
+            </li>
+
+            <li>
+                <a href="#ai-analyzer">AI Analyzer</a>
+            </li>
+
+            <li>
+                <a href="#">About</a>
+            </li>
+
+            <li>
+                <button
+                    id="adminLoginBtn"
+                    class="admin-login-btn"
+                >
+                    🔐 Admin
+                </button>
+
+                <button
+                    id="adminLogoutBtn"
+                    class="admin-login-btn"
+                    style="display: none;"
+                >
+                    🚪 Sign Out
+                </button>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- ===============================
+         HERO
+    ================================ -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                <span>●</span>
+                AI-POWERED RELEASE TRACKER
+            </div>
+
+            <h1>
+                Never Miss Your
+                <span>Next Drop.</span>
+            </h1>
+
+            <p>
+                Track confirmed releases and sneaker rumors in one place.
+                Let AI turn messy release information into clear,
+                organized sneaker data.
+            </p>
+
+            <button
+                id="browseReleasesBtn"
+                class="primary-btn"
+            >
+                Browse Releases
+                <span>↓</span>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===============================
+         AI SNEAKER ANALYZER
+    ================================ -->
+
+    <section
+        class="ai-section"
+        id="ai-analyzer"
+    >
+
+        <!-- Logged-out message -->
+
+        <div
+            id="adminOnlyMessage"
+            class="admin-only-message"
+        >
+
+            <div class="admin-lock-icon">
+                🔒
+            </div>
+
+            <h3>
+                Admin Access Required
+            </h3>
+
+            <p>
+                Sign in as an administrator to analyze
+                and add sneaker releases.
+            </p>
+
+            <button
+                id="aiAdminLoginBtn"
+            >
+                🔐 Admin Login
+            </button>
+
+        </div>
+
+
+        <!-- Admin-only analyzer -->
+
+        <div
+            id="aiAnalyzerContent"
+        >
+
+            <div class="ai-card">
+
+                <div class="ai-header">
+
+                    <div class="ai-icon">
+                        ✦
+                    </div>
+
+                    <div>
+
+                        <span class="section-label">
+                            AI POWERED
+                        </span>
+
+                        <h2>
+                            Turn Sneaker News Into Data
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <p class="ai-description">
+
+                    Paste a sneaker release post, article,
+                    or rumor below. Our AI extracts the
+                    sneaker name, release date, status,
+                    and price automatically.
+
+                </p>
+
+
+                <div class="ai-input-wrapper">
+
+                    <textarea
+                        id="aiNewsInput"
+                        placeholder="Paste sneaker news here..."
+                        rows="7"
+                    ></textarea>
+
+
+                    <div class="ai-input-footer">
+
+                        <span>
+                            🤖 Gemini AI
+                        </span>
+
+                        <button
+                            id="analyzeSneakerBtn"
+                            class="analyze-btn"
+                        >
+                            Analyze Release
+                            <span>→</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <p id="aiStatus"></p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===============================
+         RELEASE DATABASE
+    ================================ -->
+
+    <section
+        class="releases-section"
+        id="releases"
+    >
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-label">
+                    RELEASE DATABASE
+                </span>
+
+                <h2>
+                    Upcoming Releases
+                </h2>
+
+                <p>
+                    Browse the latest sneaker releases
+                    tracked by the system.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ===============================
+             SEARCH / SORT
+        ================================ -->
+
+        <div class="controls">
+
+            <div class="search-wrapper">
+
+                <span class="search-icon">
+                    ⌕
+                </span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search sneakers..."
+                >
+
+            </div>
+
+
+            <div class="sort-container">
+
+                <label for="sortSelect">
+                    Sort
+                </label>
+
+                <select id="sortSelect">
+
+                    <option value="default">
+                        Default
+                    </option>
+
+                    <option value="name">
+                        Name: A → Z
+                    </option>
+
+                    <option value="price-low">
+                        Price: Low → High
+                    </option>
+
+                    <option value="price-high">
+                        Price: High → Low
+                    </option>
+
+                    <option value="date">
+                        Release Date
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- ===============================
+             FILTERS
+        ================================ -->
+
+        <div class="filters">
+
+            <button
+                class="filter-btn"
+                data-filter="All"
+            >
+                All Releases
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="Confirmed"
+            >
+                Confirmed
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="Rumor"
+            >
+                Rumors
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="Favorites"
+            >
+                ❤️ Favorites
+            </button>
+
+        </div>
+
+
+        <!-- ===============================
+             SNEAKER CARDS
+        ================================ -->
+
+        <main id="sneaker-container"></main>
+
+    </section>
+
+
+    <!-- ===============================
+         SNEAKER DETAILS
+    ================================ -->
+
+    <section
+        id="sneaker-details"
+        class="sneaker-details"
+    ></section>
+
+
+    <!-- ===============================
+         FOOTER
+    ================================ -->
+
+    <footer>
+
+        <div class="footer-brand">
+            👟 Sneaker Tracker
+        </div>
+
+        <p>
+            AI-powered sneaker release tracking.
+        </p>
+
+    </footer>
+
+
+    <!-- ===============================
+         ADMIN LOGIN MODAL
+    ================================ -->
+
+    <div
+        id="loginModal"
+        class="login-modal"
+    >
+
+        <div class="login-box">
+
+            <button
+                id="closeLoginBtn"
+                class="close-login"
+            >
+                ×
+            </button>
+
+
+            <div class="login-icon">
+                🔐
+            </div>
+
+
+            <h2>
+                Admin Login
+            </h2>
+
+
+            <p>
+                Sign in to manage sneaker releases.
+            </p>
+
+
+            <input
+                type="password"
+                id="adminPassword"
+                placeholder="Enter admin password"
+            >
+
+
+            <button
+                id="loginSubmitBtn"
+            >
+                Sign In
+            </button>
+
+
+            <p id="loginStatus"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ===============================
+         JAVASCRIPT
+    ================================ -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
