@@ -1,14 +1,23 @@
 from flask import Flask, jsonify, request, session
 from flask_cors import CORS
-import sqlite3
 from google import genai
 from google.genai import types
+import psycopg2
 import os
 import json
 
 
-
 app = Flask(__name__)
+
+# ===============================
+# DATABASE
+# ===============================
+
+def get_db_connection():
+    return psycopg2.connect(
+        os.environ.get("DATABASE_URL")
+    )
+
 
 # ===============================
 # CONFIGURATION
@@ -27,6 +36,7 @@ CORS(
 
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
 
+
 # ===============================
 # GEMINI AI
 # ===============================
@@ -35,12 +45,12 @@ client = genai.Client(
     api_key=os.environ.get("GEMINI_API_KEY")
 )
 
+
 # ===============================
 # ADMIN AUTHENTICATION
 # ===============================
 
 def admin_required():
-
     return session.get("is_admin") is True
 
 
@@ -52,17 +62,14 @@ def admin_required():
 def admin_login():
 
     data = request.get_json() or {}
-
     password = data.get("password")
 
     if not ADMIN_PASSWORD:
-
         return jsonify({
             "error": "ADMIN_PASSWORD is not configured."
         }), 500
 
     if password != ADMIN_PASSWORD:
-
         return jsonify({
             "error": "Incorrect password."
         }), 401
@@ -161,10 +168,7 @@ def home():
 @app.route("/api/sneakers")
 def get_sneakers():
 
-    connection = sqlite3.connect(
-        "sneakers.db"
-    )
-
+    connection = get_db_connection()
     cursor = connection.cursor()
 
     cursor.execute("""
@@ -177,10 +181,12 @@ def get_sneakers():
             image,
             source
         FROM sneakers
+        ORDER BY id
     """)
 
     rows = cursor.fetchall()
 
+    cursor.close()
     connection.close()
 
     sneakers = []
@@ -218,10 +224,7 @@ def add_sneaker():
 
     data = request.get_json() or {}
 
-    connection = sqlite3.connect(
-        "sneakers.db"
-    )
-
+    connection = get_db_connection()
     cursor = connection.cursor()
 
     cursor.execute("""
@@ -234,7 +237,7 @@ def add_sneaker():
             image,
             source
         )
-        VALUES (?, ?, ?, ?, ?, ?)
+        VALUES (%s, %s, %s, %s, %s, %s)
     """, (
         data.get("name"),
         data.get("releaseDate"),
@@ -246,6 +249,7 @@ def add_sneaker():
 
     connection.commit()
 
+    cursor.close()
     connection.close()
 
     return jsonify({
@@ -272,22 +276,19 @@ def update_sneaker(sneaker_id):
 
     data = request.get_json() or {}
 
-    connection = sqlite3.connect(
-        "sneakers.db"
-    )
-
+    connection = get_db_connection()
     cursor = connection.cursor()
 
     cursor.execute("""
         UPDATE sneakers
         SET
-            name = ?,
-            release_date = ?,
-            status = ?,
-            price = ?,
-            image = ?,
-            source = ?
-        WHERE id = ?
+            name = %s,
+            release_date = %s,
+            status = %s,
+            price = %s,
+            image = %s,
+            source = %s
+        WHERE id = %s
     """, (
         data.get("name"),
         data.get("releaseDate"),
@@ -300,6 +301,7 @@ def update_sneaker(sneaker_id):
 
     connection.commit()
 
+    cursor.close()
     connection.close()
 
     return jsonify({
@@ -334,16 +336,13 @@ def update_sneaker_image(sneaker_id):
             "error": "Image URL is required."
         }), 400
 
-    connection = sqlite3.connect(
-        "sneakers.db"
-    )
-
+    connection = get_db_connection()
     cursor = connection.cursor()
 
     cursor.execute("""
         UPDATE sneakers
-        SET image = ?
-        WHERE id = ?
+        SET image = %s
+        WHERE id = %s
     """, (
         image,
         sneaker_id
@@ -351,6 +350,7 @@ def update_sneaker_image(sneaker_id):
 
     connection.commit()
 
+    cursor.close()
     connection.close()
 
     return jsonify({
@@ -375,21 +375,19 @@ def delete_sneaker(sneaker_id):
             "error": "Admin access required."
         }), 401
 
-    connection = sqlite3.connect(
-        "sneakers.db"
-    )
-
+    connection = get_db_connection()
     cursor = connection.cursor()
 
     cursor.execute("""
         DELETE FROM sneakers
-        WHERE id = ?
+        WHERE id = %s
     """, (
         sneaker_id,
     ))
 
     connection.commit()
 
+    cursor.close()
     connection.close()
 
     return jsonify({
@@ -426,22 +424,16 @@ def ai_extract():
 
     sneaker = extract_sneaker(news)
 
-    connection = sqlite3.connect(
-        "sneakers.db"
-    )
-
+    connection = get_db_connection()
     cursor = connection.cursor()
 
-    cursor.execute(
-        """
+    cursor.execute("""
         SELECT id
         FROM sneakers
-        WHERE name = ?
-        """,
-        (
-            sneaker.get("name"),
-        )
-    )
+        WHERE name = %s
+    """, (
+        sneaker.get("name"),
+    ))
 
     existing = cursor.fetchone()
 
@@ -450,10 +442,10 @@ def ai_extract():
         cursor.execute("""
             UPDATE sneakers
             SET
-                release_date = ?,
-                status = ?,
-                price = ?
-            WHERE id = ?
+                release_date = %s,
+                status = %s,
+                price = %s
+            WHERE id = %s
         """, (
             sneaker.get("releaseDate"),
             sneaker.get("status"),
@@ -475,7 +467,7 @@ def ai_extract():
                 image,
                 source
             )
-            VALUES (?, ?, ?, ?, ?, ?)
+            VALUES (%s, %s, %s, %s, %s, %s)
         """, (
             sneaker.get("name"),
             sneaker.get("releaseDate"),
@@ -489,6 +481,7 @@ def ai_extract():
 
     connection.commit()
 
+    cursor.close()
     connection.close()
 
     return jsonify({
