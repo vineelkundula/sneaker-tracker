@@ -59,7 +59,7 @@ async function loadSneakers() {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:5000/api/sneakers"
+            "https://sneaker-tracker-mymd.onrender.com/api/sneakers"
         );
 
         if (!response.ok) {
@@ -247,7 +247,7 @@ function displaySneakers(list) {
 
                             const response =
                                 await fetch(
-                                    "http://127.0.0.1:5000/api/sneakers/" +
+                                    "https://sneaker-tracker-mymd.onrender.com/api/sneakers/" +
                                     sneaker.id,
                                     {
                                         method: "DELETE",
@@ -394,7 +394,7 @@ function displaySneakers(list) {
 
                             const response =
                                 await fetch(
-                                    "http://127.0.0.1:5000/api/sneakers/" +
+                                    "https://sneaker-tracker-mymd.onrender.com/api/sneakers/" +
                                     sneaker.id +
                                     "/image",
                                     {
@@ -834,7 +834,7 @@ async function analyzeSneakerNews(news) {
 
     const response =
         await fetch(
-            "http://127.0.0.1:5000/api/ai/extract",
+            "https://sneaker-tracker-mymd.onrender.com/api/ai/extract",
             {
                 method: "POST",
 
@@ -1080,7 +1080,7 @@ if (loginSubmitBtn) {
 
                 const response =
                     await fetch(
-                        "http://127.0.0.1:5000/api/admin/login",
+                        "https://sneaker-tracker-mymd.onrender.com/api/admin/login",
                         {
                             method: "POST",
 
@@ -1210,7 +1210,7 @@ if (adminLogoutBtn) {
 
                 const response =
                     await fetch(
-                        "http://127.0.0.1:5000/api/admin/logout",
+                        "https://sneaker-tracker-mymd.onrender.com/api/admin/logout",
                         {
                             method: "POST",
                             credentials: "include"
@@ -1263,7 +1263,7 @@ async function checkAdminStatus() {
 
         const response =
             await fetch(
-                "http://127.0.0.1:5000/api/admin/status",
+                "https://sneaker-tracker-mymd.onrender.com/api/admin/status",
                 {
                     credentials: "include"
                 }
