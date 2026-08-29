@@ -50,6 +50,47 @@ const adminOnlyMessage = document.getElementById("adminOnlyMessage");
 const aiAnalyzerContent = document.getElementById("aiAnalyzerContent");
 const aiAdminLoginBtn = document.getElementById("aiAdminLoginBtn");
 
+const aboutBtn = document.getElementById("aboutBtn");
+const aboutModal = document.getElementById("aboutModal");
+const closeAboutBtn = document.getElementById("closeAboutBtn");
+
+// ===============================
+// ABOUT MODAL
+// ===============================
+
+if (aboutBtn) {
+
+    aboutBtn.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            if (aboutModal) {
+                aboutModal.style.display = "flex";
+            }
+
+        }
+    );
+
+}
+
+
+if (closeAboutBtn) {
+
+    closeAboutBtn.addEventListener(
+        "click",
+        function() {
+
+            if (aboutModal) {
+                aboutModal.style.display = "none";
+            }
+
+        }
+    );
+
+}
+
 // ===============================
 // LOAD SNEAKERS
 // ===============================
