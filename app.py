@@ -28,11 +28,16 @@ app.secret_key = os.environ.get(
     "sneaker-tracker-development-key"
 )
 
+app.config["SESSION_COOKIE_SAMESITE"] = "None"
+app.config["SESSION_COOKIE_SECURE"] = True
+
 CORS(
     app,
     supports_credentials=True,
     origins=["https://vineelkundula.github.io"]
 )
+
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
 
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
 
