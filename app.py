@@ -6,6 +6,8 @@ from google.genai import types
 import os
 import json
 
+
+
 app = Flask(__name__)
 
 # ===============================
@@ -19,7 +21,8 @@ app.secret_key = os.environ.get(
 
 CORS(
     app,
-    supports_credentials=True
+    supports_credentials=True,
+    origins=["https://vineelkundula.github.io"]
 )
 
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
